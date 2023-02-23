@@ -8,7 +8,10 @@
     <link rel = "stylesheet" href = "style.css">
 </head>
 <body>
-    <header></header>
+    <header>
+        <h1 class="nazwa">Stowarzyszenie Zatorze</h1>
+        <img src="szybowiec.jpg" alt="szybowiec" class="szybowiec">
+    </header>
     <div class="panel"></div>
     <div class="content"></div>
     <div class="nav"></div>
