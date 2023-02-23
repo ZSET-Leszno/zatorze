@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header></header>
+    <header> <button><a href="panel_admin.php">Panel Administracyjny</a></button></header>
     <div class="login"></div>
     <div class="test"></div>
 </body>
