@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stowarzyszenie zatorze</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Stowarzyszenie Zatorze</title>
 </head>
 <body>
-    <header> <button><a href="panel_admin.php">Panel Administracyjny</a></button></header>
-    <div class="login"></div>
-    <div class="test"></div>
+    <header></header>
+    <div class="panel"></div>
+    <div class="content"></div>
+    <div class="nav"></div>
+    <footer></footer>
 </body>
 </html>
