@@ -10,11 +10,11 @@
 <body>
     <header>
         <h1 class="nazwa">Stowarzyszenie Zatorze</h1>
-        <img src="szybowiec.jpg" alt="szybowiec" class="szybowiec">
+        <img src="1.jpg" alt="budynek" class="budynek">
     </header>
     <div class="panel"></div>
     <div class="content"></div>
     <div class="nav"></div>
     <footer></footer>
 </body>
-</html>s
+</html>
