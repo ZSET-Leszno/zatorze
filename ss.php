@@ -1,3 +1,8 @@
+add post with photos to database
+//
+//
+// Path: ss.php
+// Compare this snippet from panel_admin.php:
 <?php
 session_start();
      if(!isset($_SESSION['admin'])){
@@ -38,4 +43,3 @@ session_start();
       ?>
 </body>
 </html>
-
