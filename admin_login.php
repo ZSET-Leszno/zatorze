@@ -17,11 +17,11 @@
         // sprawdzenie czy zostały przesłane dane
         if(isset($_POST['login']) && isset($_POST['password'])){
             // sprawdzenie czy dane są poprawne
-            if($_POST['login'] == 'admin' && $_POST['password'] == 'admin'){
+            if($_POST['login'] == 'admin' && $_POST['password'] == 'password'){
                 // zalogowanie administratora
                 session_start();
                 $_SESSION['admin'] = true;
-                header('Location: admin_panel.php');
+                header('Location: panel_admin.php');
             } else {
                 // wyświetlenie komunikatu o błędnych danych
                 echo 'Błędny login lub hasło';
