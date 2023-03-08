@@ -1,6 +1,35 @@
 body{
     margin : 0;
 }
+.container {  display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    grid-template-rows: auto 100% auto 40%;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "header header header"
+      "panel content content"
+      "panel content content"
+      "footer footer footer";
+  }
+  
+  header { grid-area: header; 
+            background-color: #68DC19;
+        font-family: Anton;
+        font-size: 60px;
+        text-align: center;
+        padding: 10px;}
+  
+  .panel { grid-area: panel;
+         background-color: #0FF215; }
+  
+  .content { grid-area: content; 
+             background-color: #0CEB60;}
+  
+  footer { grid-area: footer; 
+            background-color: #CDF20F;
+                }
+  
 
 .zdj{
     margin: 0;

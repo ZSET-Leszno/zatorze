@@ -1,3 +1,8 @@
+add post with photos to database
+//
+//
+// Path: ss.php
+// Compare this snippet from panel_admin.php:
 <?php
 session_start();
      if(!isset($_SESSION['admin'])){
@@ -22,24 +27,19 @@ session_start();
         <input type="submit" value="Dodaj">
       </form>
       <?php
-        // Pobranie danych z formularza
-        $title = $_POST["title"];
-        $content = $_POST["content"];
-        $image = $_FILES["image"]["name"];
-
-        // Dodanie posta do bazy danych
-        $sql = "INSERT INTO posts (title, content, image) VALUES ('$title', '$content', '$image')";
-
-        if ($conn->query($sql) === TRUE) {
-            // Przesłanie zdjęcia na serwer
-            $target_dir = "uploads/";
-            $target_file = $target_dir . basename($_FILES["image"]["name"]);
-            move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
-            echo "Post added successfully.";
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+        // sprawdzenie czy zostały przesłane dane
+        if(isset($_POST['title']) && isset($_POST['content'])){
+            // połączenie z bazą danych
+            require_once 'conn.php';
+            // dodanie wpisu do bazy danych
+            $sql = "INSERT INTO posts (title, content, image) VALUES ('{$_POST['title']}', '{$_POST['content']}', '{$_FILES['image']['name']}')";            $result = mysqli_query($conn, $sql);
+            // sprawdzenie czy dodanie wpisu się powiodło
+            if($result){
+                echo 'Dodano wpis';
+            } else {
+                echo 'Wystąpił błąd podczas dodawania wpisu';
+            }
         }
       ?>
 </body>
 </html>
-

@@ -8,14 +8,16 @@
     <link rel = "stylesheet" href = "style.css">
 </head>
 <body>
-    <header>
-        <?php
-            include 'galeria.php';
-        ?>
-    </header>
-    <div class="panel"></div>
-    <div class="content"></div>
-    <div class="nav"></div>
-    <footer></footer>
+    <div class="container">
+    <header>Stowarzyszenie Zatorze</header>
+    <div class="panel">sadsadasdsad
+        
+    <div class="nav">
+        <?php include 'nav.php';?>
+    </div></div>
+    <div class="content">sadsadasdasd</div>
+    
+    <footer><?php include 'stopka.php';?></footer>
+    <div>
 </body>
 </html>
