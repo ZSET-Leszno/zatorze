@@ -15,8 +15,11 @@
         <img src="Zdjęcia/2.jpg" alt="galeria" class="zdj" id="2">
         <img src="Zdjęcia/3.jpg" alt="sp9" class="zdj" id="3">
         <img src="Zdjęcia/4.jpg" alt="rondo" class="zdj" id="4">
+        <img src="Zdjęcia/5.jpg" alt="akw" class="zdj" id="5">
+        <img src="Zdjęcia/6.jpg" alt="plac" class="zdj" id="6">
         
     </header>
+    
     <div id="DZ" style="z-index: 4; position: fixed; width: 100%; height: 100%; top: 0; left: 0; visibility: hidden;">
         <div style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: rgba(0, 0, 0, .7); cursor: pointer;" onclick="closeImage()"></div>
         <img src="<?php echo $row['image']; ?>" alt="DZ" id="DZChild" style="position: absolute; top: 5%; left: 5%; z-index: 6; width: 90%; height: 90%; object-fit: contain;">
