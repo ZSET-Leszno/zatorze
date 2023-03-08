@@ -8,7 +8,11 @@
     <link rel = "stylesheet" href = "style.css">
 </head>
 <body>
-    <header></header>
+    <header>
+        <?php
+            include 'galeria.php';
+        ?>
+    </header>
     <div class="panel"></div>
     <div class="content"></div>
     <div class="nav"></div>
