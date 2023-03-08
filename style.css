@@ -1,3 +1,10 @@
 body{
     margin : 0;
 }
+
+.zdj{
+    margin: 0;
+    border: 0px;
+    height: 250px;
+    width: 380px;
+}
