@@ -11,35 +11,48 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel administratora</title>
+    <link rel="stylesheet" href="styl2.css">
 </head>
 <body>
-    <h1>Panel administratora</h1>
-    <a href="logout.php">Wyloguj</a>
-    <form action="panel_admin.php" method="post">
-        <input type="text" name="title" placeholder="Tytuł">
-        <textarea name="content" cols="30" rows="10" placeholder="Treść"></textarea>
-        <input type="file" name="image">
+<h1>Dodaj nowy post ze zdjęciem:</h1>
+<form method="post" enctype="multipart/form-data">
+        <label for="tytul">Tytuł:</label>
+        <input type="text" name="tytul" required><br><br>
+        <label for="zdjecie">Zdjęcie:</label>
+        <input type="file" name="zdjecie" required><br><br>
+        <label for="opis">Opis:</label><br>
+        <textarea name="opis" rows="10" cols="50" required></textarea><br><br>
         <input type="submit" value="Dodaj">
-      </form>
-      <?php
-        // Pobranie danych z formularza
-        $title = $_POST["title"];
-        $content = $_POST["content"];
-        $image = $_FILES["image"]["name"];
+    </form>
+    <?php
+// Sprawdzenie czy formularz został wysłany
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        // Dodanie posta do bazy danych
-        $sql = "INSERT INTO posts (title, content, image) VALUES ('$title', '$content', '$image')";
+  require_once 'conn.php';
 
-        if ($conn->query($sql) === TRUE) {
-            // Przesłanie zdjęcia na serwer
-            $target_dir = "uploads/";
-            $target_file = $target_dir . basename($_FILES["image"]["name"]);
-            move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
-            echo "Post added successfully.";
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-      ?>
+  $tytul = $_POST['tytul'];
+  $opis = $_POST['opis'];
+  $zdjecie = 'photos/' . basename($_FILES['zdjecie']['name']);
+  
+  if (move_uploaded_file($_FILES['zdjecie']['tmp_name'], $zdjecie)) {
+      // plik został przesłany i przeniesiony do odpowiedniego folderu
+  } else {
+      // wystąpił błąd podczas przesyłania pliku
+  }
+  
+  $sql = "INSERT INTO posty (tytul, zdjecie, opis) VALUES ('$tytul', '$zdjecie', '$opis')";
+  
+  if ($conn->query($sql) === TRUE) {
+      echo "Dodano nowy post";
+      // polecenie SQL zostało wykonane pomyślnie
+  } else {
+      echo "Błąd: " . $sql . "<br>" . $conn->error;
+  }
+  
+  // Zamykanie połączenia z bazą danych
+  $conn->close();
+}
+?>
 </body>
 </html>
 

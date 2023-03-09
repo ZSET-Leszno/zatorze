@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #1E90FF;
+  }
+  
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    text-align: center;
+    color: white;
+  }
+  
+  form {
+    text-align: center;
+  }
+  
+  form label {
+    display: block;
+    color: white;
+    margin-bottom: 10px;
+  }
+  
+  form input[type="text"], form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  form input[type="submit"] {
+    background-color: white;
+    color: #1E90FF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  form input[type="submit"]:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .post {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+  
+  .post img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+  
+  .post h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  .post p {
+    margin-bottom: 0;
+    line-height: 1.5;
+    color: #555;
+  }
+  
+  .post a {
+    display: block;
+    text-align: right;
+    margin-top: 10px;
+    color: #1E90FF;
+    text-decoration: none;
+  }
+  
+  .post a:hover {
+    text-decoration: underline;
+  }
