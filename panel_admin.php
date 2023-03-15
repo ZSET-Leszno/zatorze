@@ -15,29 +15,76 @@ session_start();
 <body>
     <h1>Panel administratora</h1>
     <a href="logout.php">Wyloguj</a>
-    <form action="panel_admin.php" method="post">
-        <input type="text" name="title" placeholder="Tytuł">
-        <textarea name="content" cols="30" rows="10" placeholder="Treść"></textarea>
-        <input type="file" name="image">
-        <input type="submit" value="Dodaj">
-      </form>
+    <form action="panel_admin.php" method="post" enctype="multipart/form-data">
+  Select image to upload:
+  <input type = "text" name = "title" placeholder = "Tytuł">
+  <input type = "text" name = "content" placeholder = "Opis">
+  <input type="file" name="fileToUpload" id="fileToUpload">
+  <input type="submit" value="Upload Image" name="submit">
+</form>
       <?php
-        // Pobranie danych z formularza
-        $title = $_POST["title"];
-        $content = $_POST["content"];
-        $image = $_FILES["image"]["name"];
 
-        // Dodanie posta do bazy danych
-        $sql = "INSERT INTO posts (title, content, image) VALUES ('$title', '$content', '$image')";
+require_once "conn.php";
 
-        if ($conn->query($sql) === TRUE) {
-            // Przesłanie zdjęcia na serwer
-            $target_dir = "uploads/";
-            $target_file = $target_dir . basename($_FILES["image"]["name"]);
-            move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
-            echo "Post added successfully.";
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+
+// Check if image file is a actual image or fake image
+if(isset($_POST["submit"])) {
+  $target_dir = "uploads/";
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+  $title = $_POST['title'];
+          $content = $_POST['content'];
+         
+          $date = date('Y-m-d H:i:s');
+  $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+  if($check !== false) {
+    echo "File is an image - " . $check["mime"] . ".";
+    $uploadOk = 1;
+  } else {
+    echo "File is not an image.";
+    $uploadOk = 0;
+  }
+
+
+// Check if file already exists
+if (file_exists($target_file)) {
+  echo "Sorry, file already exists.";
+  $uploadOk = 0;
+}
+
+// Check file size
+if ($_FILES["fileToUpload"]["size"] > 500000) {
+  echo "Sorry, your file is too large.";
+  $uploadOk = 0;
+}
+
+// Allow certain file formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+  echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+  $uploadOk = 0;
+}
+
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+  echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+    $nazwa= htmlspecialchars( basename( $_FILES["fileToUpload"]["name"]));
+  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+    echo "The file ". $nazwa. " has been uploaded.";
+  } else {
+    echo "Sorry, there was an error uploading your file.";
+  }
+}
+$sql = "INSERT INTO posts (title, content, image, date) VALUES ('$title', '$content', '$target_file', '$date')";
+          $result = mysqli_query($conn, $sql);
+          if($result){
+              echo "Dodano post";
+          }else{
+              echo "Błąd, spróbuj ponownie";
+          }
         }
       ?>
 </body>
