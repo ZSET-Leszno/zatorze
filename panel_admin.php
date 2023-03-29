@@ -16,8 +16,8 @@ session_start();
 <body>
     <h1>Panel administratora</h1>
     <a href="logout.php">Wyloguj</a>
+    <a href="post_editor.php">Edytor postów</a>
     <form action="panel_admin.php" method="post" enctype="multipart/form-data">
-  Select image to upload:
   <input type = "text" name = "title" placeholder = "Tytuł">
   <input type = "text" name = "content" placeholder = "Opis">
   <input type="file" name="fileToUpload" id="fileToUpload">
@@ -82,7 +82,7 @@ if ($uploadOk == 0) {
 $sql = "INSERT INTO posts (title, content, image, date) VALUES ('$title', '$content', '$target_file', '$date')";
           $result = mysqli_query($conn, $sql);
           if($result){
-              echo "Dodano post";
+              echo "<script>alert('Post został dodany!')</script>";
           }else{
               echo "Błąd, spróbuj ponownie";
           }
