@@ -21,7 +21,7 @@ session_start();
         <input type="file" name="image">
         <input type="submit" value="Dodaj">
       </form>
-      <?php//
+      <?php
       if(isset($_POST['sumbit'])){
           $title = $_POST['title'];
           $content = $_POST['content'];
@@ -64,7 +64,7 @@ session_start();
           $sql = "INSERT INTO posts (title, content, image, date) VALUES ('$title', '$content', '$image', '$date')";
           $result = mysqli_query($conn, $sql);
           if($result){
-              echo "Dodano post";
+              echo "<script>alert('Dodano post!')</script>";
           }else{
               echo "Błąd, spróbuj ponownie";
           }
