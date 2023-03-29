@@ -11,6 +11,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel administratora</title>
+    <link rel="stylesheet" href="styl2.css">
 </head>
 <body>
     <h1>Panel administratora</h1>
@@ -23,14 +24,14 @@ session_start();
   <input type="submit" value="Upload Image" name="submit">
 </form>
       <?php
-
+$unikeid = uniqid("post");
 require_once "conn.php";
-
+//multiple images
 
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
   $target_dir = "uploads/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$target_file = $target_dir .$unikeid. basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
   $title = $_POST['title'];
