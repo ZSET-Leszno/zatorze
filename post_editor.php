@@ -29,8 +29,9 @@ session_start();
             while($row = mysqli_fetch_assoc($result)){
                 echo "<div class='post'>";
                 echo "<h2>".$row['title']."</h2>";
-                echo "<a href='post_edit.php?id=".$row['id']."'>Edytuj</a>";
-                echo "<a href='post_delete.php?title=".$row['title']."'>Usuń</a>";
+                echo "<a href='post_edit.php?id=".$row['id']."'>Edytuj treść</a>";
+                echo "<a href='post_delete.php?id=".$row['id']."'>Usuń</a>";
+                echo "<a href='post_photo_editor.php?id=".$row['id']."'>Edytuj multimedia</a>";
                 echo "</div>";
             }
         
