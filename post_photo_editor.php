@@ -36,7 +36,7 @@ session_start();
             echo "<div class='post'>";
             echo "Zdjęcia z posta: ".$row['title'];
             echo "<a href='post_photo_add.php?id=".$row['id']."'>Dodaj zdjęcie</a>";
-            echo "<img src=".$row["image"].">";
+            echo "<img src=".$row["image"]." width='200px' height='200px'>";
             echo "<a href='post_photo_delete.php?image=".$row['image']."'>Usuń zdjęcie</a>";
             echo "</div>";
         }

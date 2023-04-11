@@ -1,1 +1,1 @@
-UPDATE posts SET title = 'XDDDDDDDD', content = 'fewds5ygtr4cdw' WHERE id = '4'
+UPDATE posts SET title = 'wewe123', content = 'wewe12333' WHERE id = '1'
